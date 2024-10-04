@@ -535,8 +535,8 @@ object RawUpdater : GroupUpdater() {
                                     }
                                 }
                             }
-                            if (hopPorts.isNotBlank()) {
-                                bean.serverPorts = hopPorts
+                            if (bean.serverPorts.isNullOrBlank() && hopPorts.isNotBlank()) {
+                                bean.serverPorts = hopPorts.split("-")[0]
                             }
                             proxies.add(bean)
                         }
@@ -569,8 +569,8 @@ object RawUpdater : GroupUpdater() {
                                         opt.value.toString().substringBefore(" ").toIntOrNull() ?: 0
                                 }
                             }
-                            if (hopPorts.isNotBlank()) {
-                                bean.serverPorts = hopPorts
+                            if (bean.serverPorts.isNullOrBlank() && hopPorts.isNotBlank()) {
+                                bean.serverPorts = hopPorts.split("-")[0]
                             }
                             proxies.add(bean)
                         }
